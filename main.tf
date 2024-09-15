@@ -22,7 +22,8 @@ resource "aws_instance" "sample" {
   ami           = "ami-0acbb557db23991cc"
   instance_type = "t2.micro"
   user_data = "${file("launch-portfolio-cont.sh")}"
+  vpc_security_group_ids = [aws_security_group.test-portfolio.id]
   tags = {
-    Name = "tf-via-gha"
+    Name = "tf-sample"
   }
 }
